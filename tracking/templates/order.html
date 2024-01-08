@@ -1,0 +1,153 @@
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <title>Shipment Information Form</title>
+  </head>
+  <body style="background-color: #f8f9fa;">
+    <div class="container mt-5" style="background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+      <br> <br>
+      <form method="post" action="{% url 'tracking:create_new_order' %}">
+        {% csrf_token %}
+        <div class="row">
+          <!-- Sender Part -->
+          <div class="col-md-6">
+            <h3 style="color: #007bff;">Sender Information</h3>
+            <div class="form-group">
+              <label for="inputSenderName" style="color: #495057;">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputSenderName"
+                name="sender_name"
+                placeholder="Enter sender's name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputSenderAddress" style="color: #495057;">Sender Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputSenderAddress"
+                name="sender_address"
+                placeholder="Enter sender's address"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputSenderEmail" style="color: #495057;">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="inputSenderEmail"
+                name="sender_email"
+                placeholder="Enter sender's email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputSenderPhone" style="color: #495057;">Phone</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputSenderPhone"
+                name="sender_phone"
+                placeholder="Enter sender's phone number"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Receiver Part -->
+          <div class="col-md-6">
+            <h3 style="color: #007bff;">Receiver Information</h3>
+            <div class="form-group">
+              <label for="inputReceiverName" style="color: #495057;">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputReceiverName"
+                name="receiver_name"
+                placeholder="Enter receiver's name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputReceiverAddress" style="color: #495057;">Receiver Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputReceiverAddress"
+                name="receiver_address"
+                placeholder="Enter receiver's address"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputReceiverEmail" style="color: #495057;">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="inputReceiverEmail"
+                name="receiver_email"
+                placeholder="Enter receiver's email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputReceiverPhone" style="color: #495057;">Phone</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputReceiverPhone"
+                name="receiver_phone"
+                placeholder="Enter receiver's phone number"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Additional Order Information -->
+          <div class="col-md-6">
+            <h3 style="color: #007bff;">Other Order Information</h3>
+            <div class="form-group">
+              <label for="inputOriginAddress" style="color: #495057;">Origin Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputOriginAddress"
+                name="origin_address"
+                placeholder="Enter origin address"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputDestinationAddress" style="color: #495057;">Destination Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputDestinationAddress"
+                name="destination_address"
+                placeholder="Enter destination address"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+{% endblock %}

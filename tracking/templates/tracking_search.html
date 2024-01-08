@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Shipment Details</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container bg-white p-4 rounded shadow-sm">
+        <h2 class="text-center mb-4 text-primary">Shipment Details</h2>
+        <form id="shipmentDetailsForm">
+            <div class="form-group">
+                <label for="shipmentNumber" class="font-weight-bold">Order ID</label>
+                <input type="text" class="form-control" id="shipmentNumber" placeholder="Enter order ID" required>
+            </div>
+            <button type="button" id="getOrderDetailsBtn" class="btn btn-primary btn-block">Get Order Details</button>
+        </form>
+
+        <!-- Display area for order details -->
+        <div id="shipmentDetailsContainer" class="mt-4"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        async function getShipmentDetails() {
+            const orderID = $('#shipmentNumber').val().trim();
+
+            if (!orderID) {
+                alert('Please enter an order ID.');
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/api/orders/read/${orderID}/`);
+
+                if (!response.ok) {
+                    throw new Error(`Failed to retrieve order details. Status: ${response.status}`);
+                }
+
+                const orderDetails = await response.json();
+
+                // Update the display area with order details
+                displayOrderDetails(orderDetails);
+            } catch (error) {
+                console.error('Error:', error);
+
+                // Display an error message in the container
+                displayError('Failed to fetch order details. Please try again.');
+            }
+        }
+
+        function displayOrderDetails(details) {
+            const detailsContainer = $('#shipmentDetailsContainer');
+
+            // Build HTML content with order details
+            const htmlContent = `
+                <h4>Order Details</h4>
+                <p><strong>Order ID:</strong> ${details.id}</p>
+                <p><strong>Customer Name:</strong> ${details.customer_name}</p>
+                <p><strong>Origin Address:</strong> ${details.origin_address}</p>
+                <p><strong>Destination Address:</strong> ${details.destination_address}</p>
+                <p><strong>Order Status:</strong> ${details.order_status}</p>
+                <p><strong>Order Date:</strong> ${details.order_date}</p>
+                <p><strong>Estimated Delivery Date:</strong> ${details.estimated_delivery_date}</p>
+                <p><strong>Order Location:</strong> ${details.order_location}</p>
+            `;
+
+            // Update the container with the HTML content
+            detailsContainer.html(htmlContent);
+        }
+
+        function displayError(errorMessage) {
+            const detailsContainer = $('#shipmentDetailsContainer');
+
+            // Display an error message in the container
+            const errorContent = `<p class="text-danger">${errorMessage}</p>`;
+            detailsContainer.html(errorContent);
+        }
+
+        // Attach click event to the button
+        $('#getOrderDetailsBtn').click(getShipmentDetails);
+    </script>
+</body>
+</html>

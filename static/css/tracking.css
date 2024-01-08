@@ -1,0 +1,35 @@
+body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .container {
+    max-width: 400px;
+  }
+  
+  .bg-light {
+    background-color: #f8f9fa !important;
+  }
+  
+  .bg-white {
+    background-color: #ffffff;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  .btn-primary:active {
+    background-color: #004080;
+    border-color: #004080;
+  }
+  
+  .shadow-sm {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  

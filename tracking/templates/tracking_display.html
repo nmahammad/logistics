@@ -1,0 +1,68 @@
+{% block content %}
+    <style>
+        .order-details {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            /* background-color: #add8e6;  */
+            color: black; /* Text color set to white */
+        }
+
+        .order-field {
+            margin-bottom: 10px;
+        }
+
+        .field-label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .field-value {
+            color: #333;
+        }
+    </style>
+
+    <div class="order-details">
+        <div class="order-field">
+            <span class="field-label">Customer Name:</span>
+            <span class="field-value">{{ order.customer_name }}</span>
+
+        </div>
+
+        <div class="order-field">
+            <span class="field-label">Origin Address:</span>
+            <span class="field-value">{{ order.origin_address }}</span>
+        </div>
+
+        <div class="order-field">
+            <span class="field-label">Destination Address:</span>
+            <span class="field-value">{{ order.destination_address }}</span>
+        </div>
+
+        <div class="order-field">
+            <span class="field-label">Order Status:</span>
+            <span class="field-value">{{ order.order_status }}</span>
+        </div>
+
+        <div class="order-field">
+            <span class="field-label">Order Date:</span>
+            <span class="field-value">{{ order.order_date }}</span>
+        </div>
+
+        <div class="order-field">
+            <span class="field-label">Delivery Date:</span>
+            <span class="field-value">{{ order.delivery_date }}</span>
+        </div>
+
+        <div class="order-field">
+            <span class="field-label">Estimated Delivery Date:</span>
+            <span class="field-value">{{ order.estimated_delivery_date }}</span>
+        </div>
+
+        <div class="order-field">
+            <span class="field-label">Order Location:</span>
+            <span class="field-value">{{ order.order_location }}</span>
+        </div>
+    </div>
+{% endblock %}
