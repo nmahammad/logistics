@@ -20,3 +20,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+from django.urls import path, re_path
+from rest_framework import permissions
