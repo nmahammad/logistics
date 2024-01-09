@@ -1,6 +1,6 @@
 # #!/bin/bash
 # echo "Create migrations"
-# python manage.py makemigrations djangoapp
+# python manage.py makemigrations tracking
 # echo "=================================="
 
 # echo "Migrate"
@@ -8,4 +8,4 @@
 # echo "=================================="
 
 # echo "Start server"
-# python manage.py runserver 0.0.0.0:8000
+# python manage.py runserver 
