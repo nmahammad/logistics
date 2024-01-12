@@ -10,6 +10,7 @@ from django.core.serializers import serialize
 from rest_framework import status
 from django.shortcuts import render, redirect
 from . import forms
+from django.shortcuts import render, get_object_or_404
 
 def my_view(request):
     # Your view logic here
@@ -298,7 +299,6 @@ def order_search(request):
 
 
 
-from django.shortcuts import render, get_object_or_404
 
 def order_details(request, pk):
     try:
@@ -317,12 +317,8 @@ def order_details(request, pk):
         return HttpResponse("Order not found", status=404)
 
 
-
-
 def success_view(request):
     return render(request, 'success.html')
-
-
 
 
 API_ENDPOINT = 'http://127.0.0.1:8000/api/orders/create/'  # Replace with your actual API endpoint
